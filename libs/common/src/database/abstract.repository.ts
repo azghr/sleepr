@@ -24,12 +24,12 @@ export abstract class AbstractRepository<TDocument extends AbstractDocument> {
       throw new NotFoundException("Document not found");
     }
 
-    return document;
+    return document as unknown as TDocument;
   }
 
   async findOneAndUpdate(
     filterQuery: FilterQuery<TDocument>,
-    update: UpdateQuery<TDocument>
+    update: UpdateQuery<TDocument>,
   ): Promise<TDocument> {
     const document = await this.model.findOneAndUpdate(filterQuery, update, {
       lean: true,
@@ -41,16 +41,22 @@ export abstract class AbstractRepository<TDocument extends AbstractDocument> {
       throw new NotFoundException("Document not found");
     }
 
-    return document;
+    return document as unknown as TDocument;
   }
 
   async find(filterQuery: FilterQuery<TDocument>): Promise<TDocument[]> {
-    return this.model.find(filterQuery, {}, { lean: true });
+    return this.model.find(
+      filterQuery,
+      {},
+      { lean: true },
+    ) as unknown as Promise<TDocument[]>;
   }
 
   async findOneAndDelete(
-    filterQuery: FilterQuery<TDocument>
+    filterQuery: FilterQuery<TDocument>,
   ): Promise<TDocument> {
-    return this.model.findOneAndDelete(filterQuery, { lean: true });
+    return this.model.findOneAndDelete(filterQuery, {
+      lean: true,
+    }) as unknown as Promise<TDocument>;
   }
 }
