@@ -12,24 +12,24 @@ A hotel reservation backend built as a **NestJS monorepo of microservices**. A c
 flowchart TD
     Client([Client])
 
-    reservations["reservations<br/>HTTP :3000"]
-    auth["auth<br/>HTTP :3001 + TCP"]
-    payments["payments<br/>TCP microservice"]
-    notifications["notifications<br/>TCP microservice"]
+    reservations["reservations - HTTP :3000"]
+    auth["auth - HTTP :3001 + TCP"]
+    payments["payments - TCP service"]
+    notifications["notifications - TCP service"]
 
     mongo[(MongoDB)]
     stripe[(Stripe API)]
     gmail[(Gmail SMTP)]
 
-    Client -->|"POST /users, POST /auth/login"| auth
-    Client -->|"reservations API<br/>+ Authentication cookie"| reservations
+    Client -->|POST /users and /auth/login| auth
+    Client -->|reservations API + auth cookie| reservations
 
-    reservations -->|"TCP: authenticate"| auth
-    reservations -->|"TCP: create_charge"| payments
-    payments -->|"TCP: notify_email (event)"| notifications
+    reservations -->|TCP authenticate| auth
+    reservations -->|TCP create_charge| payments
+    payments -->|TCP notify_email event| notifications
 
-    auth <--> mongo
-    reservations <--> mongo
+    auth --- mongo
+    reservations --- mongo
     payments -.-> stripe
     notifications -.-> gmail
 ```
