@@ -33,10 +33,10 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "cookie-parser": "^1.4.7",
-    "joi": "^18.2.9",
-    "mongoose": "^7.8.12",
+    "joi": "^18.3.1",
+    "mongoose": "^7.8.13",
     "nestjs-pino": "^4.6.1",
-    "nodemailer": "^10.1.0",
+    "nodemailer": "^10.1.4",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
@@ -77,16 +77,16 @@
   "resolutions": {
     "@babel/core": "^7.29.7",
     "baseline-browser-mapping": "^2.11.23",
-    "body-parser": "^2.3.0",
+    "body-parser": "^2.4.0",
     "brace-expansion": "^5.0.12",
     "browserslist": "^4.28.9",
     "fast-copy": "^4.1.0",
-    "fast-uri": "^3.1.8",
+    "fast-uri": "^3.1.9",
     "ip-address": "^10.7.4",
     "js-yaml": "^4.3.2",
-    "multer": "^2.4.0",
+    "multer": "^2.5.0",
     "proxy-addr": "^2.0.8",
-    "qs": "^6.16.0"
+    "qs": "^6.16.1"
   },
   "jest": {
     "moduleFileExtensions": [
